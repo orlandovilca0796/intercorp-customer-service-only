@@ -1,0 +1,140 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8081
+  description: Generated server url
+paths:
+  /customer:
+    get:
+      tags:
+      - customer-rest
+      operationId: searchCustomer
+      parameters:
+      - name: id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      tags:
+      - customer-rest
+      operationId: save
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /customer/indicators:
+    get:
+      tags:
+      - customer-rest
+      operationId: calculateIndicators
+      parameters:
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Indicators'
+components:
+  schemas:
+    Customer:
+      required:
+      - custBirthday
+      - custEmail
+      - custLastName
+      - custName
+      - custNumDoc
+      - custTypeDoc
+      type: object
+      properties:
+        custNumDoc:
+          type: string
+        custTypeDoc:
+          type: string
+        custName:
+          type: string
+        custLastName:
+          type: string
+        custEmail:
+          type: string
+        custBirthday:
+          type: string
+          format: date-time
+        custStatus:
+          type: string
+        custCreationDate:
+          type: string
+          format: date-time
+    Indicators:
+      type: object
+      properties:
+        numNacidosXMonthYear:
+          type: integer
+          format: int32
+        numNacidosAll:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumNacidos'
+        mayorCantidadNacidos:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumNacidos'
+        menorCantidadNacidos:
+          type: array
+          items:
+            $ref: '#/components/schemas/NumNacidos'
+        tasaNatalidadXMonthYear:
+          type: number
+          format: double
+        tasaNatalidadAll:
+          type: array
+          items:
+            $ref: '#/components/schemas/TasaNatalidad'
+    NumNacidos:
+      type: object
+      properties:
+        cantidad:
+          type: integer
+          format: int32
+        mesAño:
+          type: string
+    TasaNatalidad:
+      type: object
+      properties:
+        tasaNatalidad:
+          type: number
+          format: double
+        mesAño:
+          type: string

@@ -30,5 +30,8 @@ Completar el user y password de la BD.
 - saveCustomer: Registrar un nuevo cliente a la BD (todos los campos son obligatorios)
 - calculateIndicators: Calcula los indicadores de tasa de natalidad de un mes/año, ademas trae el indicador de todos los mes/años que se encuentren en la BD.
 
+4. Swagger
+
+Se genero el archivo .yml con openapi. [api-docs](api-docs.yaml)
 
 
