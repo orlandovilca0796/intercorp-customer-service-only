@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "dab0c0d5-3790-41c6-bd2f-e70bfe4ec8e0",
+		"name": "IntercorpPrueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "searchCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/customer?id=70542849",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customer"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "70542849"
+						},
+						{
+							"key": "email",
+							"value": "orlando@hotmail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"custTypeDoc\":\"DNI\",\r\n    \"custLastName\":\"Alvarez\",\r\n    \"custEmail\":\"luis@hotmail.com\",\r\n    \"custBirthday\":\"01/01/2018\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculateIndicators",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/customer/indicators?date=2018/01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customer",
+						"indicators"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2018/01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
